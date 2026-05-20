@@ -1,573 +1,801 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Cliff Tao, DC, DACBR — Online Presence Audit & Growth Roadmap</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --terracotta: #9C5D3C;
-      --terracotta-light: #b8795a;
-      --olive: #6E6B41;
-      --olive-light: #8a8755;
-      --mustard: #B07E1E;
-      --charcoal: #1C1712;
-      --cream: #D1C7B5;
-      --cream-light: #EDE8DF;
-      --cream-pale: #F7F4EF;
-      --off-white: #FAF8F4;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--off-white);
-      color: var(--charcoal);
-      line-height: 1.7;
-    }
-    /* HEADER */
-    .report-header {
-      background: var(--charcoal);
-      padding: 60px 40px 50px;
-      text-align: center;
-    }
-    .agency-label {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--cream);
-      opacity: 0.7;
-      margin-bottom: 20px;
-    }
-    .report-title {
-      font-family: 'Cormorant', serif;
-      font-weight: 300;
-      font-size: clamp(32px, 5vw, 52px);
-      color: var(--off-white);
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-    .report-title em {
-      font-style: italic;
-      color: var(--cream);
-    }
-    .report-subtitle {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: 14px;
-      color: var(--cream);
-      opacity: 0.8;
-      letter-spacing: 1px;
-      margin-top: 16px;
-    }
-    /* SCORE OVERVIEW */
-    .scores-section {
-      background: var(--cream-pale);
-      padding: 60px 40px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .section-label {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 400;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--olive);
-      margin-bottom: 12px;
-    }
-    .section-heading {
-      font-family: 'Cormorant', serif;
-      font-weight: 300;
-      font-size: clamp(28px, 4vw, 42px);
-      color: var(--charcoal);
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-    .section-heading em { font-style: italic; }
-    .section-intro {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--charcoal);
-      opacity: 0.75;
-      max-width: 600px;
-      margin-bottom: 40px;
-      line-height: 1.8;
-    }
-    .scores-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-    .score-card {
-      background: white;
-      border: 1px solid var(--cream);
-      padding: 28px;
-      position: relative;
-    }
-    .score-pillar {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--olive);
-      margin-bottom: 12px;
-    }
-    .score-number {
-      font-family: 'Cormorant', serif;
-      font-weight: 300;
-      font-size: 52px;
-      color: var(--charcoal);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .score-number span {
-      font-size: 20px;
-      opacity: 0.4;
-    }
-    .score-bar-track {
-      height: 3px;
-      background: var(--cream-light);
-      margin: 14px 0 10px;
-      position: relative;
-    }
-    .score-bar-fill {
-      height: 100%;
-      background: var(--terracotta);
-      transition: width 0.6s ease;
-    }
-    .score-label {
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--charcoal);
-      opacity: 0.6;
-    }
-    /* GAPS SECTION */
-    .gaps-section {
-      background: var(--charcoal);
-      padding: 60px 40px;
-    }
-    .gaps-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .gaps-section .section-label { color: var(--cream); opacity: 0.6; }
-    .gaps-section .section-heading { color: var(--off-white); }
-    .gaps-section .section-intro { color: var(--cream); opacity: 0.7; }
-    .gaps-grid {
-      display: grid;
-      gap: 20px;
-      margin-top: 40px;
-    }
-    .gap-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 32px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-    .gap-number {
-      font-family: 'Cormorant', serif;
-      font-size: 42px;
-      font-weight: 300;
-      color: var(--terracotta);
-      line-height: 1;
-      min-width: 40px;
-    }
-    .gap-content {}
-    .gap-meta {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .gap-pillar-tag {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--cream);
-      opacity: 0.6;
-    }
-    .gap-impact-tag {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 2px;
-    }
-    .impact-critical { background: rgba(156, 93, 60, 0.3); color: #e8a07a; }
-    .impact-high { background: rgba(176, 126, 30, 0.3); color: #d4a84b; }
-    .impact-medium { background: rgba(110, 107, 65, 0.3); color: #a8a56e; }
-    .gap-title {
-      font-family: 'Cormorant', serif;
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--off-white);
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-    .gap-description {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--cream);
-      opacity: 0.75;
-      line-height: 1.8;
-    }
-    /* ROADMAP SECTION */
-    .roadmap-section {
-      background: var(--cream-pale);
-      padding: 60px 40px;
-    }
-    .roadmap-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .roadmap-phases {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-    .phase-card {
-      background: white;
-      border: 1px solid var(--cream);
-      padding: 32px;
-    }
-    .phase-number {
-      font-family: 'Cormorant', serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 8px;
-    }
-    .phase-title {
-      font-family: 'Cormorant', serif;
-      font-size: 24px;
-      font-weight: 400;
-      color: var(--charcoal);
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-    .phase-months {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--olive);
-      opacity: 0.8;
-      margin-bottom: 16px;
-    }
-    .phase-items {
-      list-style: none;
-      padding: 0;
-    }
-    .phase-items li {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--charcoal);
-      padding: 6px 0;
-      border-bottom: 1px solid var(--cream-light);
-      line-height: 1.5;
-    }
-    .phase-items li:last-child { border-bottom: none; }
-    .phase-items li::before {
-      content: '—';
-      color: var(--terracotta);
-      margin-right: 8px;
-    }
-    /* CTA */
-    .cta-section {
-      background: var(--terracotta);
-      padding: 60px 40px;
-      text-align: center;
-    }
-    .cta-inner { max-width: 600px; margin: 0 auto; }
-    .cta-label {
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 16px;
-    }
-    .cta-heading {
-      font-family: 'Cormorant', serif;
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 300;
-      color: var(--off-white);
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-    .cta-heading em { font-style: italic; }
-    .cta-text {
-      font-size: 14px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.8);
-      margin: 20px 0 32px;
-      line-height: 1.8;
-    }
-    .cta-email {
-      display: inline-block;
-      font-family: 'Outfit', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      color: var(--off-white);
-      border: 1px solid rgba(255,255,255,0.5);
-      padding: 14px 32px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .cta-email:hover {
-      background: rgba(255,255,255,0.15);
-      border-color: white;
-    }
-    /* FOOTER */
-    .report-footer {
-      background: var(--charcoal);
-      padding: 30px 40px;
-      text-align: center;
-    }
-    .footer-text {
-      font-size: 11px;
-      font-weight: 300;
-      color: var(--cream);
-      opacity: 0.5;
-      letter-spacing: 1px;
-    }
-    @media (max-width: 600px) {
-      .report-header, .scores-section, .gaps-section,
-      .roadmap-section, .cta-section, .report-footer { padding: 40px 24px; }
-      .gap-card { grid-template-columns: 1fr; gap: 12px; }
-      .gap-number { font-size: 28px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Cliff Tao, DC, DACBR | Chiropractic Radiologist | Irvine, California</title>
+<meta name="description" content="Dr. Cliff Tao, DC, DACBR — board-certified chiropractic radiologist in Irvine, CA. Expert spine and MSK imaging interpretation for chiropractors nationwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #7C9A7E;
+    --sage-dark: #4E7250;
+    --sage-mid: #6B8A6D;
+    --sage-light: #B8CEB9;
+    --sage-pale: #EAF0EA;
+    --sage-ultra: #F2F7F2;
+    --warm-white: #FDFAF5;
+    --parchment: #F5EFE4;
+    --parchment-mid: #E8DECE;
+    --terracotta: #9C5D3C;
+    --terracotta-light: #C4845E;
+    --mustard: #B07E1E;
+    --mustard-light: #D4A43A;
+    --cream: #D1C7B5;
+    --charcoal: #2D3A2E;
+    --text: #2D3A2E;
+    --text-mid: #4A5A4B;
+    --text-light: #7A8F7B;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.4rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(253,250,245,0.97);
+    backdrop-filter: blur(16px);
+    padding: 1rem 4rem;
+    box-shadow: 0 1px 0 rgba(122,143,123,0.12);
+  }
+  .nav-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .nav-logo-mark {
+    width: 36px; height: 36px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--warm-white);
+    font-weight: 500;
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+  nav:not(.scrolled) .nav-logo-mark { background: rgba(255,255,255,0.25); }
+  .nav-logo-text { display: flex; flex-direction: column; }
+  .nav-logo-name {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    line-height: 1.1;
+    transition: color 0.3s;
+  }
+  nav:not(.scrolled) .nav-logo-name { color: white; }
+  .nav-logo-sub {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    letter-spacing: 0.03em;
+    transition: color 0.3s;
+  }
+  nav:not(.scrolled) .nav-logo-sub { color: rgba(255,255,255,0.7); }
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--text-mid);
+    transition: color 0.2s;
+  }
+  nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.85); }
+  .nav-links a:hover { color: var(--sage-dark); }
+  nav:not(.scrolled) .nav-links a:hover { color: white; }
+  .nav-cta {
+    background: var(--sage) !important;
+    color: white !important;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 100px !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--sage-dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a2a1c 0%, #2d3a2e 40%, #3a4f3c 70%, #4e7250 100%);
+    transform: scale(1.05);
+    transition: transform 8s ease;
+  }
+  /* Subtle radiograph texture overlay */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(124,154,126,0.12) 0%, transparent 70%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.012) 2px,
+        rgba(255,255,255,0.012) 4px
+      );
+  }
+  .hero:hover .hero-bg { transform: scale(1); }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,42,28,0.55) 0%, rgba(45,58,46,0.3) 50%, rgba(78,114,80,0.2) 100%);
+  }
+  /* Decorative spine/vertebrae graphic hint — right side */
+  .hero-graphic {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 340px;
+    height: 340px;
+    opacity: 0.06;
+  }
+  .hero-graphic svg { width: 100%; height: 100%; }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    padding: 8rem 4rem 4rem;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2rem;
+  }
+  .hero-tag-dot {
+    width: 6px; height: 6px;
+    background: var(--sage-light);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero-h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 400;
+    color: white;
+    line-height: 1.12;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-h1 em { font-style: italic; color: var(--sage-light); }
+  .hero-sub {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: rgba(255,255,255,0.82);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--sage);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+  }
+  .btn-primary:hover { background: var(--sage-dark); transform: translateY(-1px); }
+  .btn-sage {
+    display: inline-block;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.2s;
+  }
+  .btn-sage:hover { color: white; border-color: white; }
+  .hero-stat {
+    position: absolute;
+    bottom: 3rem;
+    right: 4rem;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 1.2rem 1.8rem;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+  }
+  .stat-val {
+    font-family: 'Lora', serif;
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.75; }
+
+  /* ABOUT / PHILOSOPHY */
+  .philosophy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+  .phil-image {
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+    background: linear-gradient(160deg, #1f2e20 0%, #2d3a2e 35%, #3d5040 65%, #4e6e50 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Decorative radiology-inspired element */
+  .phil-image-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 3rem;
+  }
+  .phil-image-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,206,185,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    position: relative;
+  }
+  .phil-image-circle::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,206,185,0.15);
+  }
+  .phil-image-circle::after {
+    content: '';
+    position: absolute;
+    inset: 24px;
+    border-radius: 50%;
+    border: 1px dashed rgba(184,206,185,0.12);
+  }
+  .phil-image-initials {
+    font-family: 'Lora', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(184,206,185,0.6);
+    line-height: 1;
+  }
+  .phil-image-cred {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(184,206,185,0.5);
+  }
+  .phil-content {
+    background: var(--parchment);
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .section-badge {
+    display: inline-block;
+    background: var(--sage-pale);
+    color: var(--sage-dark);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+  .phil-h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  .phil-h2 em { font-style: italic; color: var(--sage-dark); }
+  .phil-text {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--text-mid);
+    margin-bottom: 2.5rem;
+  }
+  .steps { display: flex; flex-direction: column; gap: 1.2rem; }
+  .step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-text { font-size: 0.9rem; line-height: 1.65; color: var(--text-mid); }
+
+  /* CONDITIONS / SERVICES */
+  .conditions {
+    padding: 6rem 4rem;
+    background: var(--warm-white);
+  }
+  .conditions-header { text-align: center; margin-bottom: 3.5rem; }
+  .cond-h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin: 1rem 0 1rem;
+  }
+  .cond-h2 em { font-style: italic; color: var(--sage-dark); }
+  .cond-sub { font-size: 1rem; color: var(--text-mid); max-width: 520px; margin: 0 auto; line-height: 1.7; }
+  .conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .condition-card {
+    background: white;
+    border: 1px solid var(--sage-pale);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .condition-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(124,154,126,0.15); border-color: var(--sage-light); }
+  .cond-pill {
+    display: inline-block;
+    background: var(--sage-pale);
+    color: var(--sage-dark);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    width: fit-content;
+  }
+  .cond-title { font-family: 'Lora', serif; font-size: 1.05rem; font-weight: 500; color: var(--charcoal); }
+  .cond-text { font-size: 0.85rem; line-height: 1.7; color: var(--text-mid); flex-grow: 1; }
+  .cond-link { font-size: 0.78rem; font-weight: 500; color: var(--sage-dark); letter-spacing: 0.02em; margin-top: auto; }
+
+  /* CTA */
+  .cta-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    padding: 6rem 4rem;
+    background: var(--parchment);
+    align-items: center;
+  }
+  .cta-h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin: 1rem 0 1.2rem;
+  }
+  .cta-h2 em { font-style: italic; color: var(--sage-dark); }
+  .cta-text { font-size: 1rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 1.5rem; }
+  .cta-right {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 24px rgba(124,154,126,0.08);
+  }
+  .cta-right-title { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 500; color: var(--charcoal); margin-bottom: 1.5rem; }
+  .cta-checklist { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
+  .cta-checklist li { display: flex; gap: 0.8rem; font-size: 0.88rem; color: var(--text-mid); line-height: 1.4; align-items: flex-start; }
+  .cta-check { color: var(--sage); font-weight: 600; flex-shrink: 0; }
+
+  /* CREDENTIALS STRIP */
+  .credentials-strip {
+    background: var(--charcoal);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+  .cred-item {
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+  }
+  .cred-item-title {
+    font-family: 'Lora', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--sage-light);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .cred-item-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+  .cred-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .footer-logo-mark {
+    width: 40px; height: 40px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  .footer-brand { font-family: 'Lora', serif; font-size: 1.1rem; color: white; font-weight: 500; margin-bottom: 0.3rem; }
+  .footer-sub { font-size: 0.75rem; color: var(--sage-light); opacity: 0.7; margin-bottom: 1rem; letter-spacing: 0.04em; }
+  .footer-text { font-size: 0.78rem; line-height: 1.7; color: rgba(255,255,255,0.4); max-width: 280px; }
+  .footer-col-title { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-light); opacity: 0.7; margin-bottom: 1.2rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-links a { text-decoration: none; font-size: 0.85rem; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--sage-light); }
+  .footer-bottom {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+  .footer-agency { font-size: 0.75rem; color: var(--sage-light); opacity: 0.6; text-decoration: none; }
+  .footer-agency:hover { opacity: 1; }
+
+  /* REVEAL ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .conditions-grid { grid-template-columns: repeat(2, 1fr); }
+    .philosophy { grid-template-columns: 1fr; }
+    .phil-image { min-height: 360px; }
+    .cta-section { grid-template-columns: 1fr; gap: 2rem; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .credentials-strip { gap: 2rem; padding: 2.5rem 2rem; }
+    .cred-divider { display: none; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav.scrolled { padding: 0.8rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero-content { padding: 7rem 1.5rem 4rem; }
+    .hero-stat { right: 1.5rem; bottom: 2rem; }
+    .phil-content { padding: 3rem 1.5rem; }
+    .conditions { padding: 4rem 1.5rem; }
+    .conditions-grid { grid-template-columns: 1fr 1fr; }
+    .cta-section { padding: 4rem 1.5rem; }
+    footer { padding: 3rem 1.5rem; grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="report-header">
-    <p class="agency-label">Prepared by OnEarth Agency</p>
-    <h1 class="report-title">Dr. Cliff Tao, DC, DACBR<br><em>Online Presence Audit</em></h1>
-    <p class="report-subtitle">Irvine, Orange County, California &nbsp;·&nbsp; May 2026</p>
-  </header>
-
-  <!-- SCORES -->
-  <section class="scores-section">
-    <p class="section-label">The Six Pillars</p>
-    <h2 class="section-heading">Where you stand<br><em>right now.</em></h2>
-    <p class="section-intro">Every practice has six pillars that determine how many referring doctors find them, trust them, and pick up the phone. Here is how Dr. Cliff Tao scores today.</p>
-
-    <div class="scores-grid">
-
-      <div class="score-card">
-        <p class="score-pillar">Website</p>
-        <div class="score-number">4<span>/10</span></div>
-        <div class="score-bar-track"><div class="score-bar-fill" style="width: 40%"></div></div>
-        <p class="score-label">Online business card — no conversion layer</p>
-      </div>
-
-      <div class="score-card">
-        <p class="score-pillar">Local SEO</p>
-        <div class="score-number">5<span>/10</span></div>
-        <div class="score-bar-track"><div class="score-bar-fill" style="width: 50%"></div></div>
-        <p class="score-label">Ranks in niche — undermined by zero reviews</p>
-      </div>
-
-      <div class="score-card">
-        <p class="score-pillar">Content</p>
-        <div class="score-number">3<span>/10</span></div>
-        <div class="score-bar-track"><div class="score-bar-fill" style="width: 30%"></div></div>
-        <p class="score-label">No owned content strategy — presence is passive</p>
-      </div>
-
-      <div class="score-card">
-        <p class="score-pillar">E-E-A-T</p>
-        <div class="score-number">7<span>/10</span></div>
-        <div class="score-bar-track"><div class="score-bar-fill" style="width: 70%"></div></div>
-        <p class="score-label">Exceptional credentials — poorly surfaced online</p>
-      </div>
-
-      <div class="score-card">
-        <p class="score-pillar">Social Media</p>
-        <div class="score-number">3<span>/10</span></div>
-        <div class="score-bar-track"><div class="score-bar-fill" style="width: 30%"></div></div>
-        <p class="score-label">Accounts exist — largely inactive and low-engagement</p>
-      </div>
-
-      <div class="score-card">
-        <p class="score-pillar">Lead Capture</p>
-        <div class="score-number">2<span>/10</span></div>
-        <div class="score-bar-track"><div class="score-bar-fill" style="width: 20%"></div></div>
-        <p class="score-label">No funnel, no magnet, no clear CTA for referring doctors</p>
-      </div>
-
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">C</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Dr. Cliff Tao</span>
+      <span class="nav-logo-sub">DC, DACBR · Irvine, California</span>
     </div>
-  </section>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#education">CE Courses</a></li>
+    <li><a href="#consult" class="nav-cta">Submit a Case</a></li>
+  </ul>
+</nav>
 
-  <!-- GAPS -->
-  <section class="gaps-section">
-    <div class="gaps-inner">
-      <p class="section-label">The Findings</p>
-      <h2 class="section-heading">What's costing you<br><em>referrals right now.</em></h2>
-      <p class="section-intro">These are not hypothetical improvements. Each gap below represents a specific, identifiable reason why chiropractors and physicians who are searching for a chiropractic radiologist are choosing someone else — or not choosing at all.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <!-- Decorative SVG hint of vertebral column -->
+  <div class="hero-graphic">
+    <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="1">
+      <ellipse cx="100" cy="40" rx="35" ry="18"/>
+      <ellipse cx="100" cy="90" rx="38" ry="19"/>
+      <ellipse cx="100" cy="142" rx="40" ry="20"/>
+      <ellipse cx="100" cy="196" rx="42" ry="21"/>
+      <ellipse cx="100" cy="252" rx="40" ry="20"/>
+      <ellipse cx="100" cy="306" rx="37" ry="19"/>
+      <ellipse cx="100" cy="356" rx="34" ry="17"/>
+      <line x1="100" y1="58" x2="100" y2="71"/>
+      <line x1="100" y1="109" x2="100" y2="122"/>
+      <line x1="100" y1="162" x2="100" y2="175"/>
+      <line x1="100" y1="217" x2="100" y2="232"/>
+      <line x1="100" y1="272" x2="100" y2="287"/>
+      <line x1="100" y1="325" x2="100" y2="339"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      Nationwide Service · Reports Within 24 Hours
+    </div>
+    <h1 class="hero-h1">
+      Expert radiology reads<br>for <em>the cases that matter most.</em>
+    </h1>
+    <p class="hero-sub">Dr. Cliff Tao is one of fewer than 400 practitioners in history to hold the DACBR — the highest board certification in chiropractic radiology. Detailed, subspecialty-level spine and musculoskeletal imaging reports delivered to chiropractors, osteopathic physicians, and medical doctors across the country.</p>
+    <div class="hero-actions">
+      <a href="#consult" class="btn-primary">Submit a Case</a>
+    </div>
+    <a href="#about" class="btn-sage">Learn About the Practice →</a>
+  </div>
+  <div class="hero-stat">
+    <div class="stat-val">21+</div>
+    <div class="stat-label">Years in Practice</div>
+  </div>
+</section>
 
-      <div class="gaps-grid">
+<!-- CREDENTIALS STRIP -->
+<div class="credentials-strip">
+  <div class="cred-item">
+    <div class="cred-item-title">DACBR</div>
+    <div class="cred-item-label">Board Certified · Chiropractic Radiology</div>
+  </div>
+  <div class="cred-divider"></div>
+  <div class="cred-item">
+    <div class="cred-item-title">167+</div>
+    <div class="cred-item-label">Google Scholar Citations</div>
+  </div>
+  <div class="cred-divider"></div>
+  <div class="cred-item">
+    <div class="cred-item-title">24 hr</div>
+    <div class="cred-item-label">Standard Report Turnaround</div>
+  </div>
+  <div class="cred-divider"></div>
+  <div class="cred-item">
+    <div class="cred-item-title">30 min</div>
+    <div class="cred-item-label">Stat Report Availability</div>
+  </div>
+  <div class="cred-divider"></div>
+  <div class="cred-item">
+    <div class="cred-item-title">CA · IL · SC</div>
+    <div class="cred-item-label">Multi-State Licensed</div>
+  </div>
+</div>
 
-        <div class="gap-card">
-          <div class="gap-number">01</div>
-          <div class="gap-content">
-            <div class="gap-meta">
-              <span class="gap-pillar-tag">Lead Capture</span>
-              <span class="gap-impact-tag impact-critical">Critical</span>
-            </div>
-            <h3 class="gap-title">No Conversion Path for Referring Doctors</h3>
-            <p class="gap-description">A chiropractor who lands on clifftaodcdacbr.com has no clear next step. There is no lead magnet, no visible pricing, no online submission portal, and no prominent CTA button — just a contact form buried on a separate page. Kinetic Radiology, your most active competitor, publishes per-region pricing ($23–$35) and walks visitors through a 3-step process on the homepage. A referring doctor comparing both sites in a 90-second scan will choose the one that makes the decision easy. Right now, that is not your site.</p>
-          </div>
-        </div>
-
-        <div class="gap-card">
-          <div class="gap-number">02</div>
-          <div class="gap-content">
-            <div class="gap-meta">
-              <span class="gap-pillar-tag">E-E-A-T</span>
-              <span class="gap-impact-tag impact-critical">Critical</span>
-            </div>
-            <h3 class="gap-title">A World-Class Authority Profile That the Website Doesn't Reflect</h3>
-            <p class="gap-description">Dr. Tao holds the DACBR — a designation fewer than 400 practitioners have earned in the history of the profession. He has 167+ Google Scholar citations, national speaking credits at ACA Engage and Parker Seminars, and appearances across 9 podcasts. None of this is on the website in any meaningful way. The homepage reads like a directory listing. A referring doctor who doesn't already know Dr. Tao by reputation has no way of understanding who they are dealing with. The gap between his real-world authority and his online presentation is the single biggest opportunity in this entire audit.</p>
-          </div>
-        </div>
-
-        <div class="gap-card">
-          <div class="gap-number">03</div>
-          <div class="gap-content">
-            <div class="gap-meta">
-              <span class="gap-pillar-tag">Local SEO</span>
-              <span class="gap-impact-tag impact-critical">Critical</span>
-            </div>
-            <h3 class="gap-title">Zero Visible Reviews — the Trust Signal B2B Buyers Check First</h3>
-            <p class="gap-description">Across WebMD, Experience.com, and all accessible directories, not a single provider review could be found. Google Maps ranking in competitive searches is driven in part by review volume and recency — Kinetic Radiology has 33 verified 5-star reviews publicly displayed. Even in a low-competition niche like chiropractic radiology, a competitor with a handful of recent reviews will consistently outrank a profile with none. More importantly, a chiropractor who is unfamiliar with Dr. Tao and searches for verification before sending their first case will find silence where social proof should be.</p>
-          </div>
-        </div>
-
-        <div class="gap-card">
-          <div class="gap-number">04</div>
-          <div class="gap-content">
-            <div class="gap-meta">
-              <span class="gap-pillar-tag">Website</span>
-              <span class="gap-impact-tag impact-high">High</span>
-            </div>
-            <h3 class="gap-title">Nationwide Service Marketed Like a Local One-Doctor Office</h3>
-            <p class="gap-description">Dr. Tao is licensed in California, Illinois, and South Carolina, and has operated a nationwide chiropractic radiology practice since 2004. His website says none of this with any clarity or intent. There are no state-specific landing pages, no mention of multi-state capability in the headline or hero section, and no content targeted at chiropractors outside Orange County. This means the full addressable market — which is national — is invisible to his current marketing. Competitors like MAS Radiologic Consultants explicitly promote multi-state licensure as a feature.</p>
-          </div>
-        </div>
-
-        <div class="gap-card">
-          <div class="gap-number">05</div>
-          <div class="gap-content">
-            <div class="gap-meta">
-              <span class="gap-pillar-tag">Content</span>
-              <span class="gap-impact-tag impact-high">High</span>
-            </div>
-            <h3 class="gap-title">Podcast Authority Trapped on Other People's Platforms</h3>
-            <p class="gap-description">Dr. Tao has appeared on at least 9 chiropractic podcasts — A Doctor's Perspective, Chiro Hustle, The Back Doctors Podcast, Smart Chiropractor, and others. This is exactly the kind of content that builds trust with referring doctors. But none of it lives on his website, and his own YouTube channel appears to function as a passive archive with single-digit view counts on uploaded videos. Every podcast appearance is a referral traffic opportunity that is currently routing to someone else's platform with no redirect home.</p>
-          </div>
-        </div>
-
-        <div class="gap-card">
-          <div class="gap-number">06</div>
-          <div class="gap-content">
-            <div class="gap-meta">
-              <span class="gap-pillar-tag">Lead Capture</span>
-              <span class="gap-impact-tag impact-medium">Medium</span>
-            </div>
-            <h3 class="gap-title">CE Infrastructure Built — Not Promoted Anywhere That Matters</h3>
-            <p class="gap-description">Dr. Tao has built a continuing education product line — distance-learning radiology seminars, CBCT courses, X-ray case study programs — that is approved by the California CE Board and distributed through Sherman College and DConline. This is a relationship-building and loyalty mechanism that keeps referring doctors engaged with his name and expertise between cases. It is also a lead generation entry point. Currently, it is buried in a navigation tab and not mentioned anywhere on the homepage or in any social content, meaning the chiropractors who would most benefit from it never discover it exists.</p>
-          </div>
-        </div>
-
+<!-- PHILOSOPHY / ABOUT -->
+<section class="philosophy" id="about">
+  <div class="phil-image">
+    <div class="phil-image-inner">
+      <div class="phil-image-circle">
+        <div class="phil-image-initials">CT</div>
+      </div>
+      <div class="phil-image-cred">DC, DACBR · Irvine, California</div>
+    </div>
+  </div>
+  <div class="phil-content">
+    <div class="section-badge">The Approach</div>
+    <h2 class="phil-h2">Subspecialty expertise<br><em>your patients deserve.</em></h2>
+    <p class="phil-text">Most chiropractors are trained to take imaging. Far fewer are trained to read it with the depth a clinical decision requires. Dr. Tao built his practice on a single principle: every diagnostic image contains information that affects patient care, and it deserves the attention of a specialist who has spent two decades doing nothing else. His reports are detailed, actionable, and written to help referring doctors make better decisions — not just confirm what they already suspected.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <p class="step-text"><strong>Submit your imaging study</strong> — plain film, MRI, CT, or CBCT — through the practice portal or by phone. Standard reports are returned within 24 hours.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <p class="step-text"><strong>Receive a highly detailed interpretation</strong> written specifically for the referring clinician — findings, clinical correlations, and differential considerations included.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <p class="step-text"><strong>Stat reads available within 30 minutes</strong> for time-sensitive cases, with secondary opinions available for complex or disputed findings.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ROADMAP -->
-  <section class="roadmap-section">
-    <div class="roadmap-inner">
-      <p class="section-label">The Roadmap</p>
-      <h2 class="section-heading">Six months to a<br><em>practice that markets itself.</em></h2>
-      <p class="section-intro">This is what a structured 6-month engagement with OnEarth Agency looks like for Dr. Cliff Tao. Every phase is sequenced deliberately — foundation before growth, growth before authority. The goal is a referral engine that works without Dr. Tao having to manage it.</p>
+<!-- SERVICES / CONDITIONS -->
+<section class="conditions" id="services">
+  <div class="conditions-header reveal">
+    <div class="section-badge">Imaging Services</div>
+    <h2 class="cond-h2">Every modality.<br><em>One specialist.</em></h2>
+    <p class="cond-sub">Dr. Tao interprets all major diagnostic imaging modalities for spine and musculoskeletal conditions, with a focus on findings that directly inform clinical decision-making.</p>
+  </div>
+  <div class="conditions-grid">
+    <a href="#" class="condition-card reveal reveal-delay-1">
+      <div class="cond-pill">Plain Film</div>
+      <div class="cond-title">X-Ray Interpretation</div>
+      <p class="cond-text">When a plain film review is rushed or incomplete, findings get missed — and patient care suffers for it. Dr. Tao's plain film reports go beyond the obvious, catching incidental findings and documenting the clinical picture your case notes need.</p>
+      <span class="cond-link">Learn more →</span>
+    </a>
+    <a href="#" class="condition-card reveal reveal-delay-2">
+      <div class="cond-pill">Advanced Imaging</div>
+      <div class="cond-title">MRI Interpretation</div>
+      <p class="cond-text">MRI reports from general radiologists often lack the chiropractic and musculoskeletal clinical context your treatment decisions require. Dr. Tao reads spinal and MSK MRI with the specific lens of a DACBR — bridging the gap between the image and your plan of care.</p>
+      <span class="cond-link">Learn more →</span>
+    </a>
+    <a href="#" class="condition-card reveal reveal-delay-3">
+      <div class="cond-pill">Cross-Sectional</div>
+      <div class="cond-title">CT &amp; CBCT Interpretation</div>
+      <p class="cond-text">Cone beam CT and conventional CT demand subspecialty-level reading to extract their full clinical value. Dr. Tao specialises in CBCT and CT interpretation for spine and musculoskeletal regions, with detailed reporting that supports documentation, billing, and referral decisions.</p>
+      <span class="cond-link">Learn more →</span>
+    </a>
+    <a href="#" class="condition-card reveal reveal-delay-4">
+      <div class="cond-pill">Second Opinion</div>
+      <div class="cond-title">Secondary Reads</div>
+      <p class="cond-text">When a report doesn't match your clinical findings — or a case is simply too important to take on one reading — Dr. Tao provides formal second opinion interpretations. A subspecialist review can change a diagnosis, protect your patient, and protect your practice.</p>
+      <span class="cond-link">Learn more →</span>
+    </a>
+  </div>
+</section>
 
-      <div class="roadmap-phases">
+<!-- CTA -->
+<section class="cta-section" id="consult">
+  <div class="reveal">
+    <div class="section-badge">Get Started</div>
+    <h2 class="cta-h2">Ready to submit<br><em>your first case?</em></h2>
+    <p class="cta-text">Dr. Tao works with chiropractors, osteopathic physicians, and medical doctors across California, Illinois, and South Carolina — and accepts cases nationwide. Getting started is straightforward: call the practice, or send a message through the contact form.</p>
+    <a href="tel:7148761126" class="btn-primary" style="margin-right: 0.75rem;">Call (714) 876-1126</a>
+    <a href="#" class="btn-primary" style="background: transparent; border: 1.5px solid var(--sage); color: var(--sage-dark);">Send a Message</a>
+  </div>
+  <div class="cta-right reveal reveal-delay-2">
+    <div class="cta-right-title">What referring doctors receive</div>
+    <ul class="cta-checklist">
+      <li><span class="cta-check">✓</span>Highly detailed written interpretation by a board-certified DACBR</li>
+      <li><span class="cta-check">✓</span>Standard turnaround within 24 hours of image submission</li>
+      <li><span class="cta-check">✓</span>Stat reads available within approximately 30 minutes</li>
+      <li><span class="cta-check">✓</span>Plain film, MRI, CT, and CBCT all accepted</li>
+      <li><span class="cta-check">✓</span>Secondary opinion reads for complex or contested cases</li>
+    </ul>
+    <a href="tel:7148761126" class="btn-primary" style="width:100%;text-align:center;display:block">Call to Submit a Case</a>
+  </div>
+</section>
 
-        <div class="phase-card">
-          <p class="phase-number">Phase One</p>
-          <h3 class="phase-title">Foundation & First Impression</h3>
-          <p class="phase-months">Months 1–2</p>
-          <ul class="phase-items">
-            <li>Rebuild website with a conversion-focused homepage that communicates national reach, credentials, and a clear CTA for referring doctors</li>
-            <li>Add dedicated service pages for X-ray, MRI, CT, and CBCT interpretation with copy that speaks to chiropractor pain points</li>
-            <li>Surface credentials visibly — DACBR, 21 years in practice, 167+ publications, national speaking history</li>
-            <li>Optimise Google Business Profile with complete services, photos, and a review request system</li>
-            <li>Fix NAP inconsistency across all directories (ACCR, WebMD, Sharecare, Experience.com)</li>
-            <li>Launch a dedicated CE page on the website with a clear opt-in path for the radiology education email list</li>
-          </ul>
-        </div>
+<!-- FOOTER -->
+<footer id="education">
+  <div>
+    <div class="footer-logo-mark">C</div>
+    <div class="footer-brand">Dr. Cliff Tao, DC</div>
+    <div class="footer-sub">DC, DACBR · Chiropractic Radiologist · Irvine, California</div>
+    <p class="footer-text">The information on this website is for professional reference purposes only. Imaging interpretations are provided as consulting opinions and do not replace clinical judgment or the treating physician's direct assessment.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigate</div>
+    <ul class="footer-links">
+      <li><a href="#about">About Dr. Tao</a></li>
+      <li><a href="#services">Imaging Services</a></li>
+      <li><a href="#consult">Submit a Case</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Connect</div>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/dc_rad/">Instagram</a></li>
+      <li><a href="https://www.facebook.com/clifftaodcdacbr/">Facebook</a></li>
+      <li><a href="https://www.linkedin.com/in/clifftao/">LinkedIn</a></li>
+      <li><a href="https://www.youtube.com/@clifftaodcdacbr">YouTube</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Dr. Cliff Tao, DC, DACBR · All Rights Reserved · Irvine, California</span>
+    <a href="https://onearthagency.com" class="footer-agency">Site by OnEarth Agency</a>
+  </div>
+</footer>
 
-        <div class="phase-card">
-          <p class="phase-number">Phase Two</p>
-          <h3 class="phase-title">Trust Signals & Referral Engine</h3>
-          <p class="phase-months">Months 3–4</p>
-          <ul class="phase-items">
-            <li>Launch a structured review request campaign targeting existing referring doctors via email and LinkedIn</li>
-            <li>Embed podcast appearances and media features in a dedicated Press / Media section on the website</li>
-            <li>Create a free lead magnet for referring doctors — a radiology checklist or imaging decision guide — hosted on the website</li>
-            <li>Set up an email nurture sequence for the radiology education list with monthly case study content</li>
-            <li>Activate LinkedIn content strategy: 2 posts per week targeting chiropractors and sports medicine physicians</li>
-            <li>Repurpose the best 3–4 podcast appearances into short-form video clips for Instagram and YouTube</li>
-          </ul>
-        </div>
+<script>
+  // Nav scroll behaviour
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
 
-        <div class="phase-card">
-          <p class="phase-number">Phase Three</p>
-          <h3 class="phase-title">Authority & National Reach</h3>
-          <p class="phase-months">Months 5–6</p>
-          <ul class="phase-items">
-            <li>Build state-specific landing pages for Illinois and South Carolina to capture referral searches outside California</li>
-            <li>Launch a monthly radiology education email to the full CE and referral list — positioning Dr. Tao as the go-to educational resource in the profession</li>
-            <li>Pitch Dr. Tao for 2–3 additional high-profile chiropractic podcasts with coordinated website and social promotion</li>
-            <li>Add social proof layer to the website: testimonials from referring doctors, case study highlights, and review widget</li>
-            <li>Set up a referral partner onboarding sequence — a structured welcome flow for new referring doctors that confirms process, turnaround times, and CE resources</li>
-            <li>Quarterly performance review and strategy update aligned to referral growth targets</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-inner">
-      <p class="cta-label">Next Step</p>
-      <h2 class="cta-heading">Ready to talk<br><em>about what's possible?</em></h2>
-      <p class="cta-text">OnEarth Agency works exclusively with functional medicine and integrative health practitioners. We handle the marketing system so you can focus on the medicine. If this report resonated, the next step is a 30-minute conversation.</p>
-      <a href="mailto:hello@onearthagency.com" class="cta-email">hello@onearthagency.com</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="report-footer">
-    <p class="footer-text">Prepared by OnEarth Agency &nbsp;·&nbsp; May 2026 &nbsp;·&nbsp; onearthagency.com &nbsp;·&nbsp; hello@onearthagency.com</p>
-  </footer>
-
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
